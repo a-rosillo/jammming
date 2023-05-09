@@ -16,10 +16,10 @@ const trackListArray = tracks.map((track) => {
 
 function Tracklist () {
     return (
-        <form>
+        <div>
             <h2>Tracklist</h2>
             <div className="grid-container">{trackListArray}</div>
-        </form>
+        </div>
     )
 }
 
