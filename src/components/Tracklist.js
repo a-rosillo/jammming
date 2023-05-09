@@ -1,12 +1,15 @@
 import React from "react"
+import './Tracklist.css'
 
 const tracks = ['favourite worst nightmare', 'single ladies', 'chacha slide']
 const trackListArray = tracks.map((track) => {
     return (
-        <li>
+        <>
             {track}
-            <input type='submit' value='+' />
-        </li>
+            <div id='add-button'>
+                <p>add</p>
+            </div>
+        </>
     )
 })
 
@@ -15,7 +18,7 @@ function Tracklist () {
     return (
         <form>
             <h2>Tracklist</h2>
-            <ul>{trackListArray}</ul>
+            <div className="grid-container">{trackListArray}</div>
         </form>
     )
 }
