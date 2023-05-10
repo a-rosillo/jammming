@@ -1,15 +1,19 @@
 import React from "react"
+import Tracklist from './Tracklist'
 import './Playlist.css'
 
-const tracks = ['we will rock you', 'crazy frog', 'fast food song']
-const trackListArray = tracks.map((track) => <p>{track}</p>)
+const playlistTracks = [
+    {artist: 'queen', trackName: 'we will rock you'}, 
+    {artist: 'unknown', trackName: 'crazy frog'}, 
+    {artist:'unknown', trackName:'fast food song'}
+]
 
 
 function Playlist () {
     return (
         <div id='playlist'>
             <h2>Playlist</h2>
-            <div>{trackListArray}</div>
+            <Tracklist tracks={playlistTracks} />
         </div>
     )
 }

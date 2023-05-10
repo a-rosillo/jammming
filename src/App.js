@@ -1,13 +1,13 @@
 import './App.css';
 import Playlist from './components/Playlist';
 import SearchBar from './components/SearchBar';
-import Tracklist from './components/Tracklist';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
     <div className="App">
       <SearchBar />
-      <Tracklist/>
+      <SearchResults/>
       <Playlist />
     </div>
   );

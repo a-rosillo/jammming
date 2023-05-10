@@ -1,25 +1,15 @@
 import React from "react"
+import Track from "./Track"
 import './Tracklist.css'
 
-const tracks = ['favourite worst nightmare', 'single ladies', 'chacha slide']
-const trackListArray = tracks.map((track) => {
+function Tracklist (props) {
     return (
-        <>
-            {track}
-            <div id='add-button'>
-                <p>add</p>
-            </div>
-        </>
-    )
-})
-
-
-function Tracklist () {
-    return (
-        <div>
-            <h2>Tracklist</h2>
-            <div className="grid-container">{trackListArray}</div>
-        </div>
+        props.tracks.map((track, index) => <Track 
+            trackName={track.trackName} 
+            artist={track.artist} 
+            key={index} 
+            index={index} 
+        />)
     )
 }
 
