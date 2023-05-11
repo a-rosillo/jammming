@@ -13,7 +13,7 @@ function Playlist () {
     return (
         <div id='playlist'>
             <h2>Playlist</h2>
-            <Tracklist tracks={playlistTracks} />
+            <Tracklist tracks={playlistTracks} buttonText='-' />
         </div>
     )
 }
