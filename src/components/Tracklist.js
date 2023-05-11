@@ -6,15 +6,15 @@ function Tracklist (props) {
     return (
         props.tracks.map((track, index) => {
         return(
-            <div>
+            <div key={index}>
                 <Track 
+                    key={'track-' + index} 
+                    index={index} 
                     trackName={track.trackName} 
                     artist={track.artist} 
-                    key={index} 
-                    index={index} 
                 />
-                <div className='button'>
-                    <p>{props.buttonText}</p>
+                <div key={'button-' + index} className='button' onClick={props.onClickAdd}>
+                    <p >{props.buttonText}</p>
                 </div>
             </div>
         )
