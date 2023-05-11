@@ -7,14 +7,12 @@ function Tracklist (props) {
         props.tracks.map((track, index) => {
         return(
             <div key={index}>
-                <Track 
-                    key={'track-' + index} 
-                    index={index} 
+                <Track
                     trackName={track.trackName} 
                     artist={track.artist} 
                 />
-                <div key={'button-' + index} className='button' onClick={props.onClickAdd}>
-                    <p >{props.buttonText}</p>
+                <div className='button' onClick={props.onClickAdd}>
+                    <p>{props.buttonText}</p>
                 </div>
             </div>
         )
