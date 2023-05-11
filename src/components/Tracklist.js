@@ -5,17 +5,15 @@ import './Tracklist.css'
 function Tracklist (props) {
     return (
         props.tracks.map((track, index) => {
-        return(
-            <div key={index}>
-                <Track
-                    trackName={track.trackName} 
-                    artist={track.artist} 
-                />
-                <div className='button' onClick={props.onClickAdd}>
-                    <p>{props.buttonText}</p>
+            return(
+                <div key={index}>
+                    <Track
+                        trackName={track.trackName} 
+                        artist={track.artist} 
+                    />
+                    <p className='button' onClick={props.onClickAdd} id={track.id} >{props.buttonText}</p>
                 </div>
-            </div>
-        )
+            )
         })
     )
 }

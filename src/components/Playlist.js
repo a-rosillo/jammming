@@ -9,7 +9,7 @@ function Playlist (props) {
     return (
         <div id='playlist'>
             <h2>Playlist</h2>
-            <Tracklist tracks={props.tracks} buttonText='-' />
+            <Tracklist tracks={props.tracks} buttonText='-' onClickAdd={props.onClickAdd}/>
         </div>
     )
 }
