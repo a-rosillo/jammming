@@ -11,6 +11,7 @@ function Tracklist (props) {
                     id={track.id}
                     trackName={track.trackName} 
                     artist={track.artist} 
+                    album={track.album}
                     onClickButton={props.onClickButton}
                     buttonText = {props.buttonText}
                 />
