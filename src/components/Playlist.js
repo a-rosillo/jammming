@@ -7,9 +7,9 @@ import './Playlist.css'
 
 function Playlist (props) {
     return (
-        <div id='playlist'>
+        <div>
             <h2>Playlist</h2>
-            <Tracklist tracks={props.tracks} buttonText='-' onClickAdd={props.onClickAdd}/>
+            <Tracklist tracks={props.tracks} buttonText='-' onClickButton={props.onClickButton}/>
         </div>
     )
 }

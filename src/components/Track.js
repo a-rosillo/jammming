@@ -5,6 +5,7 @@ function Track (props) {
         <>
             <p>{props.trackName}</p>
             <p>{props.artist}</p>
+            <button onClick={props.onClickButton} id={props.id} >{props.buttonText}</button>
         </>
     )
 }

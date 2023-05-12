@@ -5,7 +5,7 @@ function SearchResults (props) {
     return (
         <div>
             <h2>Search Results</h2>
-            <Tracklist tracks={props.tracks} buttonText='+' onClickAdd={props.onClickAdd}/>
+            <Tracklist tracks={props.tracks} buttonText='+' onClickButton={props.onClickButton}/>
         </div>
     )
 }

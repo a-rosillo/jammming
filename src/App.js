@@ -14,17 +14,26 @@ const searchTracks = [
 ]
 
 function App() {
+
   const [playlistTracks, setPlaylistTracks] = useState([])
+
   function onClickAddHandler (event) {
     const trackId = event.target.id
     const track = searchTracks.find((track) => track.id.toString() === trackId)
     setPlaylistTracks(prevArray => [...prevArray, track])
   }
+
+  function onClickRemoveHandler (event) {
+    const trackId = event.target.id
+    const track = searchTracks.find((track) => track.id.toString() === trackId)
+    setPlaylistTracks(prevArray => [...prevArray, track]) // edit to remove song from array
+  }
+
   return (
     <div className="App">
       <SearchBar />
-      <SearchResults tracks={searchTracks} onClickAdd={onClickAddHandler}/>
-      <Playlist tracks={playlistTracks}/>
+      <SearchResults tracks={searchTracks} onClickButton={onClickAddHandler}/>
+      <Playlist tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
     </div>
   );
 }
