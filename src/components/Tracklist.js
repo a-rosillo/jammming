@@ -8,6 +8,7 @@ function Tracklist (props) {
             return(
                 <Track
                     key={index}
+                    index={index}
                     id={track.id}
                     trackName={track.trackName} 
                     artist={track.artist} 

@@ -17,17 +17,13 @@ function App() {
 
   const [playlistTracks, setPlaylistTracks] = useState([])
 
-  function onClickAddHandler (event) {
-    const trackId = event.target.id
-    const track = searchTracks.find((track) => track.id.toString() === trackId)
-    setPlaylistTracks(prevArray => [...prevArray, track])
-  }
+  const onClickAddHandler = index => setPlaylistTracks(
+    prevPlaylistTracks => [...prevPlaylistTracks, searchTracks[index]]
+  )
 
-  function onClickRemoveHandler (event) {
-    const trackId = event.target.id
-    const track = searchTracks.find((track) => track.id.toString() === trackId)
-    setPlaylistTracks(prevArray => [...prevArray, track]) // edit to remove song from array
-  }
+  const onClickRemoveHandler = targetIndex => setPlaylistTracks(
+    prevPlaylistTracks => prevPlaylistTracks.filter((track, index) => index !== targetIndex)
+  )
 
   return (
     <div className="App">
