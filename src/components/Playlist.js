@@ -13,6 +13,10 @@ function Playlist (props) {
         alert(props.playlistName)
     }
 
+    function handleSave () {
+        props.savePlaylist()
+    }
+
 
     return (
         <div>
@@ -27,6 +31,8 @@ function Playlist (props) {
                 <input type='submit'/>
             </form>
             <Tracklist tracks={props.tracks} buttonText='-' onClickButton={props.onClickButton}/>
+            <button onClick={handleSave}
+            >Save</button>
         </div>
     )
 }

@@ -16,7 +16,8 @@ const searchTracks = [
 function App() {
   const handleSubmit = () => alert('submitted')
   const [ playlistName, setPlaylistName ] = useState('')
-  const [playlistTracks, setPlaylistTracks] = useState([])
+  const [ playlistTracks, setPlaylistTracks ] = useState([])
+  const [ playlistToSave, setPlaylistToSave ] = useState([])
   const onClickAddHandler = index => setPlaylistTracks(
     prevPlaylistTracks => [...prevPlaylistTracks, searchTracks[index]]
   )
@@ -24,11 +25,17 @@ function App() {
     prevPlaylistTracks => prevPlaylistTracks.filter((track, index) => index !== targetIndex)
   )
 
+  function savePlaylist() {
+    setPlaylistToSave(playlistTracks)
+    setPlaylistTracks([])
+    alert(playlistToSave)
+  }
+
   return (
     <div className="App">
       <SearchBar handleSubmit={handleSubmit}/>
       <SearchResults tracks={searchTracks} onClickButton={onClickAddHandler}/>
-      <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
+      <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
     </div>
   );
 }

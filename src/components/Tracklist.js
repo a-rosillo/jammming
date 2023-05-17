@@ -9,7 +9,7 @@ function Tracklist (props) {
                 <Track
                     key={index}
                     index={index}
-                    id={track.id}
+                    id={track.uri}
                     trackName={track.trackName} 
                     artist={track.artist} 
                     album={track.album}
