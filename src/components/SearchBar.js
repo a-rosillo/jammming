@@ -1,10 +1,10 @@
 import React from "react"
 import './SearchBar.css'
 
-function SearchBar () {
+function SearchBar( {handleSubmit} ) {
     return(
-        <form>
-            <input type='search' name='search' placeholder='Search' />
+        <form onSubmit={handleSubmit}>
+            <input type='search' name='search' placeholder='Search' aria-label="Search" />
             <input type='submit' value='Search' />
         </form>
     )
