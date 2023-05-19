@@ -1,10 +1,20 @@
 import React from "react"
 import './SearchBar.css'
 
-function SearchBar( {handleSubmit} ) {
+function SearchBar(props) {
+
+    const handleChange = event => {
+        props.setSearchParam(event.target.value)
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        props.handleSubmit()
+    }
+
     return(
         <form onSubmit={handleSubmit}>
-            <input type='search' name='search' placeholder='Search' aria-label="Search" />
+            <input type='search' name='search' placeholder='Search' aria-label="Search" onChange={handleChange}/>
             <input type='submit' value='Search' />
         </form>
     )
