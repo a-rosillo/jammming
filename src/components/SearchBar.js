@@ -9,7 +9,7 @@ function SearchBar(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
-        props.handleSubmit()
+        props.handleSearch()
     }
 
     return(

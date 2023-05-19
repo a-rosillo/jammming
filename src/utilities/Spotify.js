@@ -12,7 +12,6 @@ async function getAccessToken () {
         body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
     })
     const jsonData = await response.json()
-    //console.log(jsonData)
     return jsonData.access_token
 }
 
@@ -40,3 +39,5 @@ async function search(text) {
     })
     return formattedTracks
 }
+
+export default search
