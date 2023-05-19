@@ -1,5 +1,5 @@
 const clientId = '98602489f35a4fe69ec8a7f8c0c678ca'
-const clientSecret = '' // enter client secret
+const clientSecret = 'b49047fc83974f26a900458505008308' // enter client secret
 
 
 async function getAccessToken () {
@@ -12,7 +12,7 @@ async function getAccessToken () {
         body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
     })
     const jsonData = await response.json()
-    console.log(jsonData)
+    //console.log(jsonData)
     return jsonData.access_token
 }
 
@@ -27,8 +27,16 @@ async function search(text) {
         },
     })
     const jsonData = await response.json()
-    const array = jsonData.tracks.items
-    console.log(array.map(element => element.artists[0].name))
-}
+    const tracks = jsonData.tracks.items
 
-search('brianstorm')
+    const formattedTracks = tracks.map(track => {
+        const trackImportantInfo = {
+            artist: track.artists[0].name,
+            trackName: track.name,
+            album: track.album.name,
+            uri: track.uri
+        }
+        return trackImportantInfo
+    })
+    return formattedTracks
+}
