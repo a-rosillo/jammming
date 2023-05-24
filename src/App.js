@@ -3,7 +3,7 @@ import './App.css';
 import Playlist from './components/Playlist';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
-import search from './utilities/Spotify';
+import { getAccessToken, searchSpotify } from './utilities/Spotify';
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
   const [ playlistToSave, setPlaylistToSave ] = useState([])
 
   const handleSearch = async() => {
-    setSearchResultsArray(await search(searchParam))
+    setSearchResultsArray(await searchSpotify(searchParam))
   }
   const onClickAddHandler = index => setPlaylistTracks(
     prevPlaylistTracks => [...prevPlaylistTracks, searchResultsArray[index]]
@@ -32,6 +32,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} handleSearch={handleSearch}/>
+      <button onClick={getAccessToken}>getAccessToken</button>
       <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
       <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
     </div>
