@@ -31,8 +31,8 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={getAccessToken}>Access Spotify</button>
       <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} handleSearch={handleSearch}/>
-      <button onClick={getAccessToken}>getAccessToken</button>
       <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
       <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
     </div>

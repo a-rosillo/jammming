@@ -2,15 +2,14 @@ const clientId = '98602489f35a4fe69ec8a7f8c0c678ca'
 const redirectUri = 'http://localhost:3000'
 let accessToken = null
 
-
 function getAccessToken () {
-    if(accessToken){
-        return accessToken
+    if (window.location.href.indexOf('#') === -1){
+        alert('Please authorise access to Spotify.')
+        authorize()
+    } else {
+        const hashParams = getHashParams(window.location.href)
+        accessToken = hashParams.accesstoken
     }
-    const returnedUrl = authorize()
-    const hashParams = getHashParams(returnedUrl)
-    accessToken = hashParams.accesstoken
-    return accessToken
     }
 
 function authorize () {
@@ -20,7 +19,6 @@ function authorize () {
     url += '&redirect_uri=' + encodeURIComponent(redirectUri);
     url += '&scope=playlist-modify-public'
     window.location = url
-    return window.location.href
 }
 
 function getHashParams (url){
@@ -72,30 +70,34 @@ function createObjectFromArrayOfPairs (arrayOfPairs) {
 }
 
 async function searchSpotify(text) {
-    const endpoint = 'https://api.spotify.com/v1/search'
-    const type = ['track']
-    const accessToken = getAccessToken()
-    const response = await fetch(`${endpoint}?q=${text}&type=${type}`,{
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${accessToken}`
-        },
-    })
-    const jsonData = await response.json()
-    const tracks = jsonData.tracks.items
-
-    const formattedTracks = tracks.map(track => {
-        const trackImportantInfo = {
-            artist: track.artists[0].name,
-            trackName: track.name,
-            album: track.album.name,
-            uri: track.uri
+    if (window.location.href.indexOf('#') === -1){
+        alert('Please authorise access to Spotify.')
+        authorize()
+    } else {
+        if(!accessToken){
+            getAccessToken()
         }
-        return trackImportantInfo
-    })
-    return formattedTracks
+        const endpoint = 'https://api.spotify.com/v1/search'
+        const type = ['track']
+        const response = await fetch(`${endpoint}?q=${text}&type=${type}`,{
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
+        })
+        const jsonData = await response.json()
+        const tracks = jsonData.tracks.items
+
+        const formattedTracks = tracks.map(track => {
+            const trackImportantInfo = {
+                artist: track.artists[0].name,
+                trackName: track.name,
+                album: track.album.name,
+                uri: track.uri
+            }
+            return trackImportantInfo
+        })
+        return formattedTracks
+    }
 }
-
-//getHashParams('http://localhost:3000/#access_token=BQDS_L2yLz-f_7C6fcsOs1yQuyu7n665L69mdp3kNNBUnw6e4XPZO5kRck__dkVR8QCb_ZTrnoIBVln-TYfHCRjvMYaKfQ4TVBSWxb33vOx9OGyyYdy7oOT_gFjXzCarhzeWxcuI45jjfBI5Hbpqr0MAVpRyhUs2GjFXnFFoDiDEN-2Vb44jBNCRzTk9hhTfrwL71Fgvbhgh&token_type=Bearer&expires_in=3600')
-
 export { getAccessToken, searchSpotify }
