@@ -3,13 +3,9 @@ const redirectUri = 'http://localhost:3000'
 let accessToken = null
 
 function getAccessToken () {
-    if (window.location.href.indexOf('#') === -1){
-        alert('Please authorise access to Spotify.')
-        authorize()
-    } else {
-        const hashParams = getHashParams(window.location.href)
-        accessToken = hashParams.accesstoken
-    }
+    const hashParams = getHashParams(window.location.href)
+    accessToken = hashParams.accesstoken
+    
     }
 
 function authorize () {
@@ -19,6 +15,19 @@ function authorize () {
     url += '&redirect_uri=' + encodeURIComponent(redirectUri);
     url += '&scope=playlist-modify-public'
     window.location = url
+}
+
+async function getCurrentUserId () {
+    const endpoint = 'https://api.spotify.com/v1/me'
+    const response = await fetch(endpoint,{
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        },
+    })
+    const jsonData = await response.json()
+    const id = jsonData.id
+    return id
 }
 
 function getHashParams (url){
@@ -100,4 +109,31 @@ async function searchSpotify(text) {
         return formattedTracks
     }
 }
-export { getAccessToken, searchSpotify }
+
+async function createPlaylist (playlistName) {
+    if (window.location.href.indexOf('#') === -1){
+        alert('Please authorise access to Spotify.')
+        authorize()
+    } else {
+        if(!accessToken){
+            getAccessToken()
+        }
+        if(typeof playlistName !== 'string'){
+            throw Error('Playlist name must be a string')
+        }
+        const id = await getCurrentUserId()
+        const endpoint = `https://api.spotify.com/v1/users/${id}/playlists`
+        const response = await fetch(endpoint,{
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${accessToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({name: playlistName})
+        })
+        const jsonData = await response.json()
+        console.log(jsonData)
+    }
+}
+
+export { getAccessToken, searchSpotify, createPlaylist }

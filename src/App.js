@@ -3,7 +3,7 @@ import './App.css';
 import Playlist from './components/Playlist';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
-import { getAccessToken, searchSpotify } from './utilities/Spotify';
+import { createPlaylist, getAccessToken, searchSpotify } from './utilities/Spotify';
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
   function savePlaylist() {
     setPlaylistToSave(playlistTracks)
     setPlaylistTracks([])
-    alert(playlistToSave)
+    createPlaylist('Mock name')
   }
 
   return (
