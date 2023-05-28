@@ -110,8 +110,12 @@ async function searchSpotify(text) {
     }
 }
 
-async function createPlaylist (playlistName, trackUris){
+async function createPlaylist (playlistName, playlistTracks){
     const playListId = await createEmptyPlaylist(playlistName)
+    const uris = playlistTracks.map(track => track.uri)
+    const trackUris = {
+        uris: uris
+    }
     addSongsToPlaylist(playListId, trackUris)
 }
 
@@ -143,6 +147,7 @@ async function createEmptyPlaylist (playlistName) {
 }
 
 async function addSongsToPlaylist (playlistId, trackUris) {
+    console.log(JSON.stringify(trackUris))
     const endpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
     const response = await fetch(endpoint, {
         method: 'POST',

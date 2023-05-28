@@ -11,7 +11,6 @@ function App() {
   const [ searchResultsArray, setSearchResultsArray ] = useState([])
   const [ playlistName, setPlaylistName ] = useState('')
   const [ playlistTracks, setPlaylistTracks ] = useState([])
-  const [ playlistToSave, setPlaylistToSave ] = useState([])
 
   const handleSearch = async() => {
     setSearchResultsArray(await searchSpotify(searchParam))
@@ -24,14 +23,8 @@ function App() {
   )
 
   function savePlaylist() {
-    setPlaylistToSave(playlistTracks)
+    createPlaylist('Mock name', playlistTracks)
     setPlaylistTracks([])
-    const trackUris = {
-      uris: ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
-          "spotify:track:1301WleyT98MSxVHPZCA6M", 
-          "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]
-    }
-    createPlaylist('Mock name', trackUris)
   }
 
   return (
