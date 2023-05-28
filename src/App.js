@@ -3,7 +3,7 @@ import './App.css';
 import Playlist from './components/Playlist';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
-import { createPlaylist, getAccessToken, searchSpotify } from './utilities/Spotify';
+import { createPlaylist, searchSpotify } from './utilities/Spotify';
 
 
 function App() {
@@ -23,13 +23,12 @@ function App() {
   )
 
   function savePlaylist() {
-    createPlaylist('Mock name', playlistTracks)
+    createPlaylist(playlistName, playlistTracks)
     setPlaylistTracks([])
   }
 
   return (
     <div className="App">
-      <button onClick={getAccessToken}>Access Spotify</button>
       <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} handleSearch={handleSearch}/>
       <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
       <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>

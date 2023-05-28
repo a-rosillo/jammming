@@ -147,7 +147,6 @@ async function createEmptyPlaylist (playlistName) {
 }
 
 async function addSongsToPlaylist (playlistId, trackUris) {
-    console.log(JSON.stringify(trackUris))
     const endpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
     const response = await fetch(endpoint, {
         method: 'POST',
@@ -157,8 +156,6 @@ async function addSongsToPlaylist (playlistId, trackUris) {
         },
         body: JSON.stringify(trackUris)
     })
-    const jsonData = await response.json()
-    console.log(jsonData)
 }
 
-export { getAccessToken, searchSpotify, createPlaylist }
+export { searchSpotify, createPlaylist }
