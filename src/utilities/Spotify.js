@@ -110,7 +110,12 @@ async function searchSpotify(text) {
     }
 }
 
-async function createPlaylist (playlistName) {
+async function createPlaylist (playlistName, trackUris){
+    const playListId = await createEmptyPlaylist(playlistName)
+    addSongsToPlaylist(playListId, trackUris)
+}
+
+async function createEmptyPlaylist (playlistName) {
     if (window.location.href.indexOf('#') === -1){
         alert('Please authorise access to Spotify.')
         authorize()
@@ -123,7 +128,7 @@ async function createPlaylist (playlistName) {
         }
         const id = await getCurrentUserId()
         const endpoint = `https://api.spotify.com/v1/users/${id}/playlists`
-        const response = await fetch(endpoint,{
+        const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
                 "Authorization": `Bearer ${accessToken}`,
@@ -132,8 +137,23 @@ async function createPlaylist (playlistName) {
             body: JSON.stringify({name: playlistName})
         })
         const jsonData = await response.json()
-        console.log(jsonData)
+        return jsonData.id
+        
     }
+}
+
+async function addSongsToPlaylist (playlistId, trackUris) {
+    const endpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(trackUris)
+    })
+    const jsonData = await response.json()
+    console.log(jsonData)
 }
 
 export { getAccessToken, searchSpotify, createPlaylist }
