@@ -146,9 +146,9 @@ async function createEmptyPlaylist (playlistName) {
     }
 }
 
-async function addSongsToPlaylist (playlistId, trackUris) {
+function addSongsToPlaylist (playlistId, trackUris) {
     const endpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
-    const response = await fetch(endpoint, {
+    fetch(endpoint, {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${accessToken}`,
