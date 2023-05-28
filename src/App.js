@@ -29,9 +29,13 @@ function App() {
 
   return (
     <div className="App">
+      <header>
       <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} handleSearch={handleSearch}/>
+      </header>
+      <main>
       <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
-      <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
+      <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/> 
+      </main>
     </div>
   );
 }
