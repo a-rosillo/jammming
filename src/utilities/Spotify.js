@@ -1,4 +1,4 @@
-const clientId = '98602489f35a4fe69ec8a7f8c0c678ca'
+const clientId = 'a91002a8aab14a76bb485df3e9c5ef62'
 const redirectUri = 'https://spotify-api-project.netlify.app'
 let accessToken = null
 
