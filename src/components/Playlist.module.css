@@ -1,0 +1,13 @@
+.input{
+    background-color: #A8D0E6;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit {
+    background-color: #F76C6C;
+    padding: 10px;
+}

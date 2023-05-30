@@ -1,5 +1,5 @@
 import React from "react"
-import './SearchBar.css'
+import styles from "./SearchBar.module.css"
 
 function SearchBar(props) {
 
@@ -13,9 +13,9 @@ function SearchBar(props) {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input type='search' name='search' placeholder='Search' aria-label="Search" onChange={handleChange}/>
-            <input type='submit' value='Search' />
+        <form className="search-form" onSubmit={handleSubmit}>
+            <input className={styles.input} type='search' name='search' placeholder='Search' aria-label="Search" onChange={handleChange}/>
+            <input className={styles.submit} type='submit' value='Search' />
         </form>
     )
 }

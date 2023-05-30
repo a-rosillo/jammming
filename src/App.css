@@ -1,9 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #464646;
+    box-sizing: border-box;
+}
+
+.App {
+    background-color: #24305E;
+    height: 100%;
+}
+
 header {
     text-align: center;
+}
+h1 {    
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #F8E9A1;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    margin: 20px;
+}
+
+h2, input {
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+form, input {
+    border: 0;
 }
 
 main {
     display: flex;
-    width: 100;
     justify-content: center;
+    height: 100%;
+}
+
+.search-results,
+.playlist{
+    
+    flex-basis: 500px;
+    min-height: 700px;
+    margin: 10px 30px;
+    background-color: #A8D0E6;
 }

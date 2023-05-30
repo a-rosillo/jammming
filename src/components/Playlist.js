@@ -1,6 +1,6 @@
 import React from "react"
 import Tracklist from './Tracklist'
-import './Playlist.css'
+import styles from './Playlist.module.css'
 
 function Playlist (props) {
 
@@ -10,7 +10,7 @@ function Playlist (props) {
 
     function handleSubmit (event) {
         event.preventDefault()
-        alert(props.playlistName)
+        handleSave()
     }
 
     function handleSave () {
@@ -19,20 +19,29 @@ function Playlist (props) {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="playlist">
+            <form 
+                className={styles.form}
+                onSubmit={handleSubmit}
+            >
                 <input
+                    className={styles.input}
                     type="text"
-                    placeholder="Playlist name"
+                    placeholder="Your playlist name"
                     aria-label="Playlist name"
                     value={props.playlistName}
                     onChange={handleChange}
                 />
-                <input type='submit'/>
+                <input 
+                    className={styles.submit}
+                    type='submit' 
+                    value='Save'/>
             </form>
-            <Tracklist tracks={props.tracks} buttonText='-' onClickButton={props.onClickButton}/>
-            <button onClick={handleSave}
-            >Save</button>
+            <Tracklist 
+                tracks={props.tracks} 
+                buttonText='-' 
+                onClickButton={props.onClickButton}
+            />
         </div>
     )
 }

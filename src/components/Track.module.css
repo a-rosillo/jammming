@@ -1,0 +1,28 @@
+.trackbox {
+    margin: 10px 0;
+}
+
+.textbox {
+    display: inline-block;
+    width: 85%;
+}
+
+.trackName, .artist, .album{
+    padding: 0 0 0 10px;
+    width: 100%;
+}
+
+.trackName {
+    font-size: 1.5rem;
+}
+
+.button {
+    float: right;
+    height: 64px;
+    border: solid #A8D0E6;
+    width: 15%;
+    background-color: #F76C6C;
+    border-width: 0 5px;
+    font-size: 2rem;
+    font-weight: 800;
+}

@@ -30,11 +30,12 @@ function App() {
   return (
     <div className="App">
       <header>
-      <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} handleSearch={handleSearch}/>
+        <h1>Spotify Playlist Creator</h1>
+        <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} handleSearch={handleSearch}/>
       </header>
       <main>
-      <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
-      <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/> 
+        <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
+        <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/> 
       </main>
     </div>
   );
