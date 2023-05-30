@@ -1,5 +1,5 @@
 const clientId = '98602489f35a4fe69ec8a7f8c0c678ca'
-const redirectUri = 'http://localhost:3000'
+const redirectUri = 'https://spotify-api-project.netlify.app'
 let accessToken = null
 
 function getAccessToken () {
