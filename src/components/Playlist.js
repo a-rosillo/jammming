@@ -19,19 +19,21 @@ function Playlist (props) {
 
 
     return (
-        <div className="playlist">
+        <div id="playlist">
             <form 
                 className={styles.form}
                 onSubmit={handleSubmit}
             >
-                <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="Your playlist name"
-                    aria-label="Playlist name"
-                    value={props.playlistName}
-                    onChange={handleChange}
-                />
+                <span className={styles.span}>
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="Your playlist name"
+                        aria-label="Playlist name"
+                        value={props.playlistName}
+                        onChange={handleChange}
+                    />
+                </span>
                 <input 
                     className={styles.submit}
                     type='submit' 

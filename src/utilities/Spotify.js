@@ -1,5 +1,6 @@
 const clientId = 'a91002a8aab14a76bb485df3e9c5ef62'
-const redirectUri = 'https://spotify-api-project.netlify.app'
+//const redirectUri = 'https://spotify-api-project.netlify.app'
+const redirectUri = 'http://localhost:3000'
 let accessToken = null
 
 function getAccessToken () {
@@ -33,6 +34,9 @@ async function getCurrentUserId () {
 function getHashParams (url){
     const hashFragmentIndex = url.indexOf('#')
     const hashFragment = url.slice(hashFragmentIndex)
+    if (hashFragment.indexOf('&') === -1){
+        authorize()
+    }
     let currentAmpersandIndex = hashFragment.indexOf('&')
     const ampersandIndicies =[]
     while (currentAmpersandIndex !== -1){

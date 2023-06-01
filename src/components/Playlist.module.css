@@ -1,16 +1,19 @@
-.input{
-    background-color: #A8D0E6;
+.form {
+    display: grid;
+    grid-template-columns: auto 100px;
 }
 
-.form {
-    display: flex;
-    justify-content: space-between;
+.span{
+    overflow: hidden;
+}
+
+.input{
+    background-color: #A8D0E6;
 }
 
 .submit {
     box-sizing: border-box;
     height: 60px;
-    width: 100px;
     background-color: #F76C6C;
 }
 

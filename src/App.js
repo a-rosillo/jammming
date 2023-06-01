@@ -35,7 +35,11 @@ function App() {
       </header>
       <main>
         <SearchResults tracks={searchResultsArray} onClickButton={onClickAddHandler}/>
-        <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/> 
+        <Playlist playlistName={playlistName} setPlaylistName={setPlaylistName} savePlaylist={savePlaylist} tracks={playlistTracks} onClickButton={onClickRemoveHandler}/>
+        <nav>
+          <a href="#search-results">Search Results</a>
+          <a href="#playlist">Playlist</a>
+        </nav>
       </main>
     </div>
   );

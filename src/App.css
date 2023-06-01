@@ -15,6 +15,7 @@
 header {
     text-align: center;
 }
+
 h1 {    
     font-size: 2.5rem;
     text-transform: uppercase;
@@ -23,13 +24,38 @@ h1 {
     margin-bottom: 20px;
 }
 
+nav {
+    position: fixed;
+    bottom: 20px;
+}
+
+a {
+    box-sizing: border-box;
+    margin: 0 10px;
+    padding: 10px;
+    height: 160px;
+    background-color: #F76C6C;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+a:hover {
+    border: solid #464646;
+    border-width: 0 0 5px 3px;
+}
+
+a:active {
+    border: solid #464646;
+    border-width: 2px 1px 0 0;
+}
+
 .search-form {
     margin: 20px;
 }
 
 h2, input {
     padding: 10px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
@@ -41,13 +67,26 @@ main {
     display: flex;
     justify-content: center;
     height: 100%;
+    flex-wrap: wrap;
 }
 
-.search-results,
-.playlist{
+#search-results,
+#playlist{
     
     flex-basis: 500px;
     min-height: 700px;
     margin: 10px 30px;
     background-color: #A8D0E6;
+}
+
+@media only screen and (max-width: 576px) {
+    h2, input {
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 1119px) {
+    nav {
+        display: none;
+    }
 }

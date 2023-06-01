@@ -1,7 +1,7 @@
 .trackbox {
     margin: 10px 0;
     display: grid;
-    grid-template-columns: 85fr 15fr;
+    grid-template-columns: auto 74px;
 }
 
 .trackName, .artist, .album{
