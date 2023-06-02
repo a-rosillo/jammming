@@ -15,9 +15,13 @@ function App() {
   const handleSearch = async() => {
     setSearchResultsArray(await searchSpotify(searchParam))
   }
-  const onClickAddHandler = index => setPlaylistTracks(
-    prevPlaylistTracks => [...prevPlaylistTracks, searchResultsArray[index]]
-  )
+  const onClickAddHandler = index => {
+    if (!playlistTracks.includes(searchResultsArray[index])){
+      setPlaylistTracks(
+        prevPlaylistTracks => [...prevPlaylistTracks, searchResultsArray[index]]
+      )
+    }
+  }
   const onClickRemoveHandler = targetIndex => setPlaylistTracks(
     prevPlaylistTracks => prevPlaylistTracks.filter((track, index) => index !== targetIndex)
   )
